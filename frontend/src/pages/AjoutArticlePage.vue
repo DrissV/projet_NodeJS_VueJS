@@ -31,25 +31,28 @@
 import { ref } from 'vue';
 
     const article = ref({});
+    const imageUrl = ref(null);
 
     const { userId, token } = JSON.parse(localStorage.userData);
 
     const onFileChange = (event) => {
-        article.value.imageUrl = event.target.files[0];
+        imageUrl.value = event.target.files[0];
     };
 
     const ajoutArticle = () => {
-        console.log(JSON.stringify({...article.value, userId}));
+        const formData = new FormData();
+        formData.append('image', imageUrl.value);
+        formData.append('article', JSON.stringify({
+            ...article.value,
+            userId,
+        }));
+        console.log(formData);
         fetch('http://localhost:3000/api/articles', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                ...article.value,
-                userId,
-            }),
+            body: formData,
         })
         .then((response) => {
             if (!response.ok) {

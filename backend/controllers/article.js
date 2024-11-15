@@ -18,13 +18,13 @@ exports.createArticle = (req, res, next) => {
     delete articleObject._id;
     delete articleObject._userId;
     
-    const thing = new Article({
+    const article = new Article({
         ...articleObject,
         userId: req.auth.userId,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
 
-    Article.save()
+    article.save()
         .then(() => res.status(201).json({ message: 'Article enregistré !' }))
         .catch((error) => res.status(400).json({ error }));
 };

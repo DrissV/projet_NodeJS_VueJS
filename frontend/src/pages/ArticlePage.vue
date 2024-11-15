@@ -18,27 +18,25 @@
 
 <script setup>
     import Layout from '@/components/Layout.vue';
-import { onMounted, ref } from 'vue';
+import { onMounted, onServerPrefetch, ref } from 'vue';
 
-    defineProps({
+    const props = defineProps({
         id: String,
     });
 
     const article = ref(null);
 
+    const { userId, token } = JSON.parse(localStorage.userData);
+
     onMounted(async () => {
-        const response =  await fetch(`http://localhost:3000/api/articles/${id}`, {
+        const response =  await fetch(`http://localhost:3000/api/articles/${props.id}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer${token}`,
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
         })
-        .then((response) => {
-            console.log(response);
-            return response.json();
-        });
 
-        console.log(response);
+        article.value = await response.json();
     });
 </script>
