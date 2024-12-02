@@ -10,14 +10,19 @@
                     <input type="email" name="email" id="email" class="form-control" v-model="email" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password" class="form-label">Mot de passe</label>
+                    <label for="password" class="form-label">
+                        <span class="bi bi-lock" aria-hidden="true"></span> Mot de passe
+                    </label>
                     <input type="password" name="password" id="password" class="form-control" v-model="password" required>
                 </div>
                 <div class="form-group mb-3">
-                    <button class="btn btn-primary me-2">Se connecter</button>
-                    <RouterLink to="/register">Vous n'avez pas de compte ? Veuillez vous inscrire !</RouterLink>
+                    <button class="btn btn-primary me-2">
+                        <span class="bi bi-person-check" aria-hidden="true"></span> Se connecter
+                    </button>
                 </div>
             </form>
+            
+            <RouterLink to="/register" class="btn btn-link mt-3">Vous n'avez pas de compte ? Veuillez vous inscrire !</RouterLink>
         </template>
     </Layout>
 </template>

@@ -18,15 +18,21 @@
                     <input type="tel" name="phone" id="phone" class="form-control" v-model="user.phone">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">
+                        <span class="bi bi-at" aria-hidden="true"></span>  Email
+                    </label>
                     <input type="email" name="email" id="email" class="form-control" v-model="user.email" required :disabled="hasEmail">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password" class="form-label">Mot de passe</label>
+                    <label for="password" class="form-label">
+                        <span class="bi bi-lock" aria-hidden="true"></span> Mot de passe
+                    </label>
                     <input type="password" name="password" id="password" class="form-control" v-model="password">
                 </div>
                 <div class="form-group mb-3">
-                    <label for="confirmPassword" class="form-label">Confirmation de mot de passe</label>
+                    <label for="confirmPassword" class="form-label">
+                        <span class="bi bi-lock" aria-hidden="true"></span> Confirmation de mot de passe
+                    </label>
                     <input type="password" name="password" id="confirmPassword" class="form-control" v-model="confirmPassword">
                 </div>
                 <div class="form-group mb-3">
